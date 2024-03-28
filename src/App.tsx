@@ -15,11 +15,17 @@ export default function App() {
     const newGoal = {
       title: "My first Goal",
       description: "First goal description",
-      id: Math.floor(Math.random() * 100),
+      id: Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100),
     };
     // Add goal
     setGoals((prevValues) => {
       return [newGoal, ...prevValues];
+    });
+  };
+
+  const deleteGoalHandler = (id: number) => {
+    setGoals((prev) => {
+      return prev.filter((item) => item.id !== id);
     });
   };
   return (
@@ -29,7 +35,12 @@ export default function App() {
       </Header>
       <button onClick={addGoalHandler}>Add Goal</button>
       {goals.map((g) => (
-        <CourseGoal title={g.title}>
+        <CourseGoal
+          key={g.id}
+          title={g.title}
+          id={g.id}
+          deleteGoal={deleteGoalHandler}
+        >
           <p>{g.description}</p>
         </CourseGoal>
       ))}

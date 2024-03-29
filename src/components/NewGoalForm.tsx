@@ -9,11 +9,14 @@ export default function NewGoalForm({ setFormData }: NewGoalFormProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLInputElement>(null);
 
-  const submitHandler = (e: FormEvent) => {
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const title = titleRef.current!.value;
     const description = descriptionRef.current!.value;
+
+    // Reset form
+    e.currentTarget.reset();
 
     const newGoal: CourseGoal = {
       title,

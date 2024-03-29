@@ -42,6 +42,7 @@ export default function App() {
       <Header image={{ src: "/goals.jpg", alt: "Goal image" }}>
         <h2>Your Course Goals </h2>
       </Header>
+
       {/* <button onClick={addGoalHandler}>Add Goal</button> */}
       <NewGoalForm setFormData={getFormData} />
       <GoalsList goals={goals} onDelete={deleteGoal} />
